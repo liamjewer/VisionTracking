@@ -16,8 +16,8 @@ public class Window {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
         frame.setResizable(false);
+        frame.setVisible(true);
         main.start();
     }
 }

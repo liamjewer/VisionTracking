@@ -1,19 +1,17 @@
 package com.liam.tracker;
 
-import com.github.sarxos.webcam.Webcam;
-
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class Main extends Canvas implements Runnable{
     private boolean running = false;
     private Thread thread;
-    Webcam webcam;
 
     public static void main(String[] args) {
         new Window(640, 480, "tracking", new Main());
     }
+
     @Override
     public void run() {
         init();
@@ -46,9 +44,7 @@ public class Main extends Canvas implements Runnable{
         }
     }
     private void init() {
-        webcam = Webcam.getDefault();
-        webcam.setViewSize(new Dimension(640, 480));
-        webcam.open();
+        CameraInput.initialize(1);
     }
 
     private void render() {
@@ -57,55 +53,27 @@ public class Main extends Canvas implements Runnable{
             this.createBufferStrategy(3);
             return;
         }
+        Graphics g = bs.getDrawGraphics();
+        Graphics2D g2d = (Graphics2D)g;
 
-        Graphics gr = bs.getDrawGraphics();
-
-        gr.drawImage(webcam.getImage(), 0, 0, null);
-
-        gr.setColor(Color.green);
-
-        BufferedImage image = webcam.getImage();
-        int w = image.getWidth();
-        int h = image.getHeight();
-
-        for(int x = 0; x < w; x++) {
-            for (int y = 0; y < h; y++) {
-                int pixel = image.getRGB(x, y);
-                int r = (pixel >> 16) & 0xff;
-                int g = (pixel >> 8) & 0xff;
-                int b = (pixel) & 0xff;
-                float hsb[] = new float[3];
-                Color.RGBtoHSB(r, g, b, hsb);
-
-                if      (hsb[1] < 0.1 && hsb[2] > 0.9) nearlyWhite(x, y, gr);
-                else if (hsb[2] < 0.1) nearlyBlack(x, y, gr);
-                else {
-                    float deg = hsb[0]*360;
-                    if ((deg >=   0 && deg <  10) && (hsb[1] > 0.6)) targetColor(x, y, gr);
-                }
-            }
+        //all graphical elements in here
+        g.drawImage(CameraInput.getInput(), 0,0, null);
+        ArrayList<Point> points = ColourFinder.getPointsByColor(CameraInput.getInput(), 0, 10, 0.9);
+        g.setColor(Color.WHITE);
+        for (Point point : points) g.drawRect((int) point.getX(), (int) point.getY(), 1, 1);
+        Rectangle avg = Target.getAveragePoint(points);
+        g.setColor(Color.GREEN);
+        if (avg != null) {
+            g2d.draw(avg);
         }
 
-        // TODO: 2019-04-21  look through image to find "chunks" of blue and outline them with drawrect
-
-        gr.dispose();
+        g.dispose();
         bs.show();
     }
 
-    private void targetColor(int x, int y, Graphics g) {
-        g.fillRect(x, y, 1, 1);
-    }
-    private void nearlyBlack(int x, int y, Graphics g) {
-
-    }
-    private void nearlyWhite(int x, int y, Graphics g) {
-
-    }
-
     private void tick() {
-
     }
-    public void start() {
+    void start() {
         if(running)
             return;
 
