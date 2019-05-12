@@ -5,8 +5,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 class ColourFinder {
-    float min, max;
-    double sThreshold;
     static ArrayList<Point> getPointsByColor(BufferedImage image, float min, float max, double sThreshold){
         int w = image.getWidth();
         int h = image.getHeight();

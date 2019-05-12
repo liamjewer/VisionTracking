@@ -60,11 +60,16 @@ public class Main extends Canvas implements Runnable{
         g.drawImage(CameraInput.getInput(), 0,0, null);
         ArrayList<Point> points = ColourFinder.getPointsByColor(CameraInput.getInput(), 0, 10, 0.9);
         g.setColor(Color.WHITE);
-        for (Point point : points) g.drawRect((int) point.getX(), (int) point.getY(), 1, 1);
+        //for (Point point : points) g.drawRect((int) point.getX(), (int) point.getY(), 1, 1);
         Rectangle avg = Target.getAveragePoint(points);
         g.setColor(Color.GREEN);
         if (avg != null) {
             g2d.draw(avg);
+            g.setColor(Color.GREEN);
+            g2d.fillOval((int)avg.getCenterX() - 5, (int)avg.getCenterY() - 5, 10, 10);
+            g.setColor(Color.BLACK);
+            for(int i = 20; i < 60; i += 10)
+                g2d.drawOval((int)avg.getCenterX() - i/2, (int)avg.getCenterY() - i/2, i, i);
         }
 
         g.dispose();
