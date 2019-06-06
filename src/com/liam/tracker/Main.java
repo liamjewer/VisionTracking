@@ -44,7 +44,7 @@ public class Main extends Canvas implements Runnable{
         }
     }
     private void init() {
-        CameraInput.initialize(1);
+        CameraInput.initialize(0);
     }
 
     private void render() {
