@@ -6,14 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f8b381b-53c3-47a0-a5c8-abe1f134c6ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/webcam_capture_0_3_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/bridj_0_7_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tracking.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Tracking.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tracking/com/liam/tracker/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tracking/com/liam/tracker/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/liam/tracker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/liam/tracker/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="2f8b381b-53c3-47a0-a5c8-abe1f134c6ca" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +18,7 @@
     <session id="-1295888761">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="4" />
@@ -35,8 +28,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8272" />
-          <entry key="PLAIN_TEXT" value="95" />
+          <entry key="JAVA" value="8304" />
+          <entry key="PLAIN_TEXT" value="143" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -55,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/liam/tracker/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="46" column="32" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+              <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
               <folding>
                 <element signature="e#1255#1256#0" expanded="true" />
                 <element signature="e#1296#1297#0" expanded="true" />
@@ -253,12 +246,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557452736472</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="changed to default camera">
+      <created>1559863554436</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559863554436</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49566162" visible="true" weight="0.16414945" />
       <window_info id="Structure" order="1" sideWeight="0.50323623" side_tool="true" weight="0.1581876" />
@@ -269,12 +268,12 @@
       <window_info id="Favorites" order="6" sideWeight="0.50161815" side_tool="true" weight="0.09658188" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.329718" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.329718" />
@@ -348,7 +347,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added vcs.xml" />
     <MESSAGE value="added a target finding system based on average location of points" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a target finding system based on average location of points" />
+    <MESSAGE value="changed to default camera" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed to default camera" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/liam/tracker/Camera.java" />
@@ -411,7 +411,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/liam/tracker/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="46" column="32" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+          <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
           <folding>
             <element signature="e#1255#1256#0" expanded="true" />
             <element signature="e#1296#1297#0" expanded="true" />
