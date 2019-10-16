@@ -1,15 +1,15 @@
 package com.liam.tracker;
 
 import com.github.sarxos.webcam.Webcam;
-
-import java.awt.*;
+import com.github.sarxos.webcam.WebcamResolution;
 import java.awt.image.BufferedImage;
 
 class CameraInput {
-    private static Webcam webcam;
-    static void initialize(int camera){
-        webcam = Webcam.getWebcams().get(camera);
-        webcam.setViewSize(new Dimension(640, 480));
+    static Webcam webcam;
+    static void initialize(){
+        webcam = Webcam.getWebcams().get(0);
+        webcam.setCustomViewSizes(WebcamResolution.HD.getSize());
+        webcam.setViewSize(WebcamResolution.HD.getSize());
         webcam.open();
     }
 

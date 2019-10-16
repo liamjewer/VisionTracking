@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Window {
-    public static JFrame frame;
+    private static JFrame frame;
     public Window(int width, int height, String title, Main main){
         main.setPreferredSize(new Dimension(width, height));
         main.setMaximumSize(new Dimension(width, height));

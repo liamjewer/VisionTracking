@@ -1,15 +1,17 @@
 package com.liam.tracker;
 
+import com.github.sarxos.webcam.WebcamResolution;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
 public class Main extends Canvas implements Runnable{
     private boolean running = false;
-    private Thread thread;
+    private ArrayList<Blob> blobs = new ArrayList<>();
 
     public static void main(String[] args) {
-        new Window(640, 480, "tracking", new Main());
+        new Window(WebcamResolution.HD.getSize().width, WebcamResolution.HD.getSize().height, "tracking", new Main());
     }
 
     @Override
@@ -44,7 +46,7 @@ public class Main extends Canvas implements Runnable{
         }
     }
     private void init() {
-        CameraInput.initialize(0);
+        CameraInput.initialize();
     }
 
     private void render() {
@@ -58,32 +60,30 @@ public class Main extends Canvas implements Runnable{
 
         //all graphical elements in here
         g.drawImage(CameraInput.getInput(), 0,0, null);
-        ArrayList<Point> points = ColourFinder.getPointsByColor(CameraInput.getInput(), 0, 10, 0.9);
+        g.drawString("Device Name: " + CameraInput.webcam.getName(), 10, 15);
+        g.drawString("FPS: " + Math.round(CameraInput.webcam.getFPS()), 10, 30);
+        ArrayList<Point> points = ColourFinder.getPointsByColor(CameraInput.getInput());
         g.setColor(Color.WHITE);
         //for (Point point : points) g.drawRect((int) point.getX(), (int) point.getY(), 1, 1);
-        Rectangle avg = Target.getAveragePoint(points);
-        g.setColor(Color.GREEN);
-        if (avg != null) {
-            g2d.draw(avg);
-            g.setColor(Color.GREEN);
-            g2d.fillOval((int)avg.getCenterX() - 5, (int)avg.getCenterY() - 5, 10, 10);
-            g.setColor(Color.BLACK);
-            for(int i = 20; i < 60; i += 10)
-                g2d.drawOval((int)avg.getCenterX() - i/2, (int)avg.getCenterY() - i/2, i, i);
+        blobs = ColourFinder.blobify(points);
+        if(blobs != null) {
+            for (Blob b : blobs) {
+                b.render(g2d);
+            }
+            blobs.clear();
         }
 
         g.dispose();
         bs.show();
     }
 
-    private void tick() {
-    }
+    private void tick() {}
     void start() {
         if(running)
             return;
 
         running = true;
-        thread = new Thread(this);
+        Thread thread = new Thread(this);
         thread.start();
     }
 }
